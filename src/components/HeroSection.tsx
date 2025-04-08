@@ -61,11 +61,16 @@ const HeroSection = () => {
             <div className="absolute -top-10 -left-10 w-40 h-40 bg-brand-purple/20 rounded-full blur-3xl"></div>
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-brand-blue/20 rounded-full blur-3xl"></div>
             
-            <div className="p-4 bg-white rounded-2xl shadow-lg animate-float">
+            <div className="p-4 bg-white rounded-2xl shadow-lg relative">
               <img 
                 src={heroImage} 
                 alt="Interface da plataforma ContentAI" 
-                className="w-full h-auto rounded-lg shadow-sm"
+                className="w-full h-auto rounded-lg shadow-sm object-contain"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.onerror = null;
+                  target.src = 'https://placehold.co/600x400/e9d5ff/a855f7?text=ContentAI+Interface';
+                }}
               />
               
               <div className="absolute -bottom-5 -right-5 bg-white rounded-lg p-3 shadow-lg">
