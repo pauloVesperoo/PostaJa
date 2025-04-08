@@ -14,13 +14,27 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow">
-        <HeroSection />
-        <StatsSection />
-        <FeaturesSection />
-        <DemoSection />
-        <TestimonialSection />
-        <PricingSection />
-        <CtaSection />
+        <section id="hero">
+          <HeroSection />
+        </section>
+        <section id="stats">
+          <StatsSection />
+        </section>
+        <section id="features">
+          <FeaturesSection />
+        </section>
+        <section id="demo">
+          <DemoSection />
+        </section>
+        <section id="testimonials">
+          <TestimonialSection />
+        </section>
+        <section id="pricing">
+          <PricingSection />
+        </section>
+        <section id="cta">
+          <CtaSection />
+        </section>
       </main>
       <Footer />
     </div>
