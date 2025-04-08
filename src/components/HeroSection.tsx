@@ -2,9 +2,12 @@
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 import heroImage from '../assets/hero-image.png';
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="bg-gradient-radial from-brand-purple/10 to-brand-blue/5 pt-28 pb-16">
       <div className="container px-6 mx-auto max-w-7xl">
@@ -16,25 +19,25 @@ const HeroSection = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-purple opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-purple"></span>
               </span>
-              Ferramenta de IA para redes sociais
+              {t('hero', 'badge')}
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Seu conteúdo de Instagram pronto em <span className="gradient-text">2 minutos</span>
+              {t('hero', 'title')} <span className="gradient-text">{t('hero', 'titleHighlight')}</span>
             </h1>
             
             <p className="text-lg md:text-xl text-gray-600 max-w-xl">
-              Para donos de negócios locais que não têm tempo. Gere ideias, artes e legendas com IA e agende postagens com um clique.
+              {t('hero', 'description')}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
               <Button size="lg" className="bg-gradient-to-r from-brand-purple to-brand-blue hover:opacity-90 text-white font-medium">
                 <Link to="/cadastro" className="flex items-center gap-2">
-                  Comece de graça <ArrowRight size={16} />
+                  {t('hero', 'startFree')} <ArrowRight size={16} />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="border-brand-purple text-brand-purple hover:bg-brand-purple/5">
-                <Link to="/demo">Ver demonstração</Link>
+                <Link to="/demo">{t('hero', 'demo')}</Link>
               </Button>
             </div>
             
@@ -51,7 +54,7 @@ const HeroSection = () => {
                 </div>
               </div>
               <p className="text-sm text-gray-600">
-                <span className="font-bold text-brand-purple">500+</span> negócios locais aprovam
+                <span className="font-bold text-brand-purple">500+</span> {t('hero', 'businesses')}
               </p>
             </div>
           </div>

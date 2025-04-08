@@ -3,15 +3,40 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { useLanguage, Language } from '@/contexts/LanguageContext';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       setIsMenuOpen(false);
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleLanguageChange = (newLanguage: Language) => {
+    setLanguage(newLanguage);
+  };
+
+  const getFlagEmoji = (lang: Language): string => {
+    switch (lang) {
+      case 'pt-BR':
+        return '🇧🇷';
+      case 'en-US':
+        return '🇺🇸';
+      case 'es-ES':
+        return '🇪🇸';
+      default:
+        return '';
     }
   };
 
@@ -30,30 +55,69 @@ const Navbar = () => {
             onClick={() => scrollToSection('hero')} 
             className="text-gray-700 hover:text-brand-purple transition-colors"
           >
-            Início
+            {t('nav', 'home')}
           </button>
           <button 
             onClick={() => scrollToSection('features')} 
             className="text-gray-700 hover:text-brand-purple transition-colors"
           >
-            Recursos
+            {t('nav', 'features')}
           </button>
           <button 
             onClick={() => scrollToSection('pricing')} 
             className="text-gray-700 hover:text-brand-purple transition-colors"
           >
-            Preços
+            {t('nav', 'pricing')}
           </button>
           <Link to="/login" className="text-gray-700 hover:text-brand-purple transition-colors">
-            Login
+            {t('nav', 'login')}
           </Link>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="icon" className="h-8 w-8 rounded-full">
+                {getFlagEmoji(language)}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => handleLanguageChange('pt-BR')} className="cursor-pointer">
+                <span className="mr-2">🇧🇷</span> Português
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleLanguageChange('en-US')} className="cursor-pointer">
+                <span className="mr-2">🇺🇸</span> English
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleLanguageChange('es-ES')} className="cursor-pointer">
+                <span className="mr-2">🇪🇸</span> Español
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <Button className="bg-gradient-to-r from-brand-purple to-brand-blue hover:opacity-90">
-            <Link to="/cadastro">Comece Grátis</Link>
+            <Link to="/cadastro">{t('nav', 'startFree')}</Link>
           </Button>
         </div>
 
         {/* Mobile Navigation Toggle */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-2">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="icon" className="h-8 w-8 rounded-full">
+                {getFlagEmoji(language)}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => handleLanguageChange('pt-BR')} className="cursor-pointer">
+                <span className="mr-2">🇧🇷</span> Português
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleLanguageChange('en-US')} className="cursor-pointer">
+                <span className="mr-2">🇺🇸</span> English
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleLanguageChange('es-ES')} className="cursor-pointer">
+                <span className="mr-2">🇪🇸</span> Español
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          
           <Button 
             variant="ghost" 
             size="icon" 
@@ -72,32 +136,32 @@ const Navbar = () => {
             onClick={() => scrollToSection('hero')} 
             className="text-gray-700 hover:text-brand-purple transition-colors py-2 border-b text-left"
           >
-            Início
+            {t('nav', 'home')}
           </button>
           <button 
             onClick={() => scrollToSection('features')} 
             className="text-gray-700 hover:text-brand-purple transition-colors py-2 border-b text-left"
           >
-            Recursos
+            {t('nav', 'features')}
           </button>
           <button 
             onClick={() => scrollToSection('pricing')} 
             className="text-gray-700 hover:text-brand-purple transition-colors py-2 border-b text-left"
           >
-            Preços
+            {t('nav', 'pricing')}
           </button>
           <Link 
             to="/login" 
             className="text-gray-700 hover:text-brand-purple transition-colors py-2 border-b"
             onClick={() => setIsMenuOpen(false)}
           >
-            Login
+            {t('nav', 'login')}
           </Link>
           <Button 
             className="bg-gradient-to-r from-brand-purple to-brand-blue hover:opacity-90 mt-2"
             onClick={() => setIsMenuOpen(false)}
           >
-            <Link to="/cadastro">Comece Grátis</Link>
+            <Link to="/cadastro">{t('nav', 'startFree')}</Link>
           </Button>
         </div>
       )}
