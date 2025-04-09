@@ -55,7 +55,7 @@ const Dashboard = () => {
       <aside className="w-64 bg-white border-r border-gray-200 p-4 hidden md:flex flex-col">
         <div className="mb-10">
           <Link to="/" className="flex items-center">
-            <span className="text-xl font-bold gradient-text">ContentAI</span>
+            <span className="text-xl font-bold gradient-text">PostaJá</span>
           </Link>
         </div>
         
