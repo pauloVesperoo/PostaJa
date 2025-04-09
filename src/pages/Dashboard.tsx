@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -15,7 +16,8 @@ import {
   User,
   FileText,
   Clock,
-  Users
+  Users,
+  Send
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -81,14 +83,24 @@ const Dashboard = () => {
               <span className="text-xl font-bold gradient-text">PostaJá</span>
             </Link>
             
-            {/* Highlighted New Post Button */}
-            <Button 
-              className="w-full bg-gradient-to-r from-brand-purple to-brand-blue hover:opacity-90 mt-2"
-              onClick={() => alert("Criar novo post")}
-            >
-              <PlusCircle className="mr-2 h-5 w-5" />
-              Novo Post
-            </Button>
+            {/* Highlighted Buttons for Main Functions */}
+            <div className="space-y-2 mt-2">
+              <Button 
+                className="w-full bg-gradient-to-r from-brand-purple to-brand-blue hover:opacity-90"
+                onClick={() => alert("Criar conteúdo com IA")}
+              >
+                <PlusCircle className="mr-2 h-5 w-5" />
+                Criar com IA
+              </Button>
+              
+              <Button 
+                className="w-full bg-gradient-to-r from-brand-blue to-green-500 hover:opacity-90"
+                onClick={() => alert("Agendar post")}
+              >
+                <Send className="mr-2 h-5 w-5" />
+                Agendar Post
+              </Button>
+            </div>
           </SidebarHeader>
           
           <SidebarContent>
