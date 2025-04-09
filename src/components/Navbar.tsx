@@ -1,7 +1,6 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useLanguage, Language } from '@/contexts/LanguageContext';
 import {
@@ -44,19 +43,13 @@ const Navbar = () => {
     <nav className="py-4 px-6 md:px-12 w-full bg-white/80 backdrop-blur-sm fixed top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <Link to="/" className="flex items-center">
-            <span className="text-xl md:text-2xl font-bold gradient-text">ContentAI</span>
-          </Link>
+          <a href="#" onClick={() => scrollToSection('hero')} className="flex items-center">
+            <span className="text-xl md:text-2xl font-bold gradient-text">PostaJá</span>
+          </a>
         </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          <button 
-            onClick={() => scrollToSection('hero')} 
-            className="text-gray-700 hover:text-brand-purple transition-colors"
-          >
-            {t('nav', 'home')}
-          </button>
           <button 
             onClick={() => scrollToSection('features')} 
             className="text-gray-700 hover:text-brand-purple transition-colors"
@@ -64,14 +57,23 @@ const Navbar = () => {
             {t('nav', 'features')}
           </button>
           <button 
+            onClick={() => scrollToSection('platforms')} 
+            className="text-gray-700 hover:text-brand-purple transition-colors"
+          >
+            {t('nav', 'platforms')}
+          </button>
+          <button 
             onClick={() => scrollToSection('pricing')} 
             className="text-gray-700 hover:text-brand-purple transition-colors"
           >
             {t('nav', 'pricing')}
           </button>
-          <Link to="/login" className="text-gray-700 hover:text-brand-purple transition-colors">
-            {t('nav', 'login')}
-          </Link>
+          <button 
+            onClick={() => scrollToSection('faq')} 
+            className="text-gray-700 hover:text-brand-purple transition-colors"
+          >
+            {t('nav', 'faq')}
+          </button>
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -91,10 +93,6 @@ const Navbar = () => {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-
-          <Button className="bg-gradient-to-r from-brand-purple to-brand-blue hover:opacity-90">
-            <Link to="/cadastro">{t('nav', 'startFree')}</Link>
-          </Button>
         </div>
 
         {/* Mobile Navigation Toggle */}
@@ -145,24 +143,23 @@ const Navbar = () => {
             {t('nav', 'features')}
           </button>
           <button 
+            onClick={() => scrollToSection('platforms')} 
+            className="text-gray-700 hover:text-brand-purple transition-colors py-2 border-b text-left"
+          >
+            {t('nav', 'platforms')}
+          </button>
+          <button 
             onClick={() => scrollToSection('pricing')} 
             className="text-gray-700 hover:text-brand-purple transition-colors py-2 border-b text-left"
           >
             {t('nav', 'pricing')}
           </button>
-          <Link 
-            to="/login" 
-            className="text-gray-700 hover:text-brand-purple transition-colors py-2 border-b"
-            onClick={() => setIsMenuOpen(false)}
+          <button 
+            onClick={() => scrollToSection('faq')} 
+            className="text-gray-700 hover:text-brand-purple transition-colors py-2 border-b text-left"
           >
-            {t('nav', 'login')}
-          </Link>
-          <Button 
-            className="bg-gradient-to-r from-brand-purple to-brand-blue hover:opacity-90 mt-2"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <Link to="/cadastro">{t('nav', 'startFree')}</Link>
-          </Button>
+            {t('nav', 'faq')}
+          </button>
         </div>
       )}
     </nav>

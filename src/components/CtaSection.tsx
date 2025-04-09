@@ -1,9 +1,15 @@
 
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 const CtaSection = () => {
+  const scrollToPricing = () => {
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <section className="py-24 bg-gradient-to-r from-brand-purple to-brand-blue text-white">
       <div className="container px-6 mx-auto max-w-7xl">
@@ -17,14 +23,12 @@ const CtaSection = () => {
           <Button 
             size="lg" 
             className="bg-white text-brand-purple hover:bg-white/90"
+            onClick={scrollToPricing}
           >
-            <Link to="/cadastro" className="flex items-center gap-2">
-              Comece de graça <ArrowRight size={16} />
-            </Link>
+            <span className="flex items-center gap-2">
+              Ver planos <ArrowRight size={16} />
+            </span>
           </Button>
-          <p className="mt-4 text-sm opacity-80">
-            Não é necessário cartão de crédito. 5 posts grátis por mês, para sempre.
-          </p>
         </div>
       </div>
     </section>

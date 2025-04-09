@@ -2,12 +2,13 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
-import DemoSection from "@/components/DemoSection";
 import StatsSection from "@/components/StatsSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import PricingSection from "@/components/PricingSection";
 import CtaSection from "@/components/CtaSection";
 import Footer from "@/components/Footer";
+import PlatformsSection from "@/components/PlatformsSection";
+import FaqSection from "@/components/FaqSection";
 
 const Index = () => {
   return (
@@ -23,14 +24,17 @@ const Index = () => {
         <section id="features">
           <FeaturesSection />
         </section>
-        <section id="demo">
-          <DemoSection />
+        <section id="platforms">
+          <PlatformsSection />
         </section>
         <section id="testimonials">
           <TestimonialSection />
         </section>
         <section id="pricing">
           <PricingSection />
+        </section>
+        <section id="faq">
+          <FaqSection />
         </section>
         <section id="cta">
           <CtaSection />

@@ -1,15 +1,13 @@
 
-import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import heroImage from '../assets/hero-image.png';
+import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
   const { t } = useLanguage();
   
   return (
-    <div className="bg-gradient-radial from-brand-purple/10 to-brand-blue/5 pt-28 pb-16">
+    <div className="bg-gradient-radial from-brand-purple/10 to-brand-blue/5 pt-28 pb-16" id="hero">
       <div className="container px-6 mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
@@ -31,13 +29,17 @@ const HeroSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
-              <Button size="lg" className="bg-gradient-to-r from-brand-purple to-brand-blue hover:opacity-90 text-white font-medium">
-                <Link to="/cadastro" className="flex items-center gap-2">
-                  {t('hero', 'startFree')} <ArrowRight size={16} />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" className="border-brand-purple text-brand-purple hover:bg-brand-purple/5">
-                <Link to="/demo">{t('hero', 'demo')}</Link>
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-brand-purple to-brand-blue hover:opacity-90 text-white font-medium"
+                onClick={() => {
+                  const pricingSection = document.getElementById('pricing');
+                  if (pricingSection) {
+                    pricingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+              >
+                Ver preços
               </Button>
             </div>
             
@@ -54,7 +56,7 @@ const HeroSection = () => {
                 </div>
               </div>
               <p className="text-sm text-gray-600">
-                <span className="font-bold text-brand-purple">500+</span> {t('hero', 'businesses')}
+                <span className="font-bold text-brand-purple">500+</span> empresas utilizam diariamente
               </p>
             </div>
           </div>
@@ -67,12 +69,12 @@ const HeroSection = () => {
             <div className="p-4 bg-white rounded-2xl shadow-lg relative">
               <img 
                 src={heroImage} 
-                alt="Interface da plataforma ContentAI" 
+                alt="Interface da plataforma PostaJá" 
                 className="w-full h-auto rounded-lg shadow-sm object-contain"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.onerror = null;
-                  target.src = 'https://placehold.co/600x400/e9d5ff/a855f7?text=ContentAI+Interface';
+                  target.src = 'https://placehold.co/600x400/e9d5ff/a855f7?text=PostaJá+Interface';
                 }}
               />
               
