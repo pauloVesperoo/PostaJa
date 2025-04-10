@@ -85,15 +85,15 @@ const Calendar = () => {
     <ProfileSidebar>
       <h1 className="text-2xl font-bold mb-6">Calendário de Publicações</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Calendar Column */}
-        <div className="md:col-span-2">
+      <div className="grid grid-cols-1 md:grid-cols-7 gap-6">
+        {/* Calendar Column - Now taking more space */}
+        <div className="md:col-span-5">
           <Card className="p-4">
             <CalendarComponent
               mode="single"
               selected={date}
               onSelect={handleDateSelect}
-              className="rounded-md border w-full p-3 pointer-events-auto"
+              className="rounded-md border w-full p-5 pointer-events-auto text-base"
               locale={ptBR}
               modifiers={{
                 withPost: isDayWithPost
@@ -110,7 +110,7 @@ const Calendar = () => {
         </div>
         
         {/* Posts for Selected Date */}
-        <div className="md:col-span-1">
+        <div className="md:col-span-2">
           <Card className="p-4 h-full">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-medium">

@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   SidebarProvider,
   Sidebar,
@@ -28,6 +28,13 @@ type ProfileSidebarProps = {
 };
 
 const ProfileSidebar = ({ children }: ProfileSidebarProps) => {
+  const location = useLocation();
+  
+  // Function to check if a path is active
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
+
   return (
     <SidebarProvider defaultOpen={true}>
       <div className="min-h-screen flex w-full">
@@ -62,7 +69,7 @@ const ProfileSidebar = ({ children }: ProfileSidebarProps) => {
             <SidebarMenu>
               <SidebarMenuItem>
                 <Link to="/dashboard">
-                  <SidebarMenuButton>
+                  <SidebarMenuButton className={isActive("/dashboard") ? "bg-gray-100 dark:bg-gray-800" : ""}>
                     <FileText />
                     <span>Posts</span>
                   </SidebarMenuButton>
@@ -70,8 +77,8 @@ const ProfileSidebar = ({ children }: ProfileSidebarProps) => {
               </SidebarMenuItem>
               
               <SidebarMenuItem>
-                <Link to="/dashboard">
-                  <SidebarMenuButton>
+                <Link to="/scheduled">
+                  <SidebarMenuButton className={isActive("/scheduled") ? "bg-gray-100 dark:bg-gray-800" : ""}>
                     <Clock />
                     <span>Agendados</span>
                   </SidebarMenuButton>
@@ -80,7 +87,7 @@ const ProfileSidebar = ({ children }: ProfileSidebarProps) => {
               
               <SidebarMenuItem>
                 <Link to="/calendar">
-                  <SidebarMenuButton>
+                  <SidebarMenuButton className={isActive("/calendar") ? "bg-gray-100 dark:bg-gray-800" : ""}>
                     <CalendarDays />
                     <span>Calendário</span>
                   </SidebarMenuButton>
@@ -94,7 +101,7 @@ const ProfileSidebar = ({ children }: ProfileSidebarProps) => {
             <SidebarMenu>
               <SidebarMenuItem>
                 <Link to="/settings">
-                  <SidebarMenuButton>
+                  <SidebarMenuButton className={isActive("/settings") ? "bg-gray-100 dark:bg-gray-800" : ""}>
                     <Settings />
                     <span>Configurações</span>
                   </SidebarMenuButton>
@@ -103,7 +110,7 @@ const ProfileSidebar = ({ children }: ProfileSidebarProps) => {
               
               <SidebarMenuItem>
                 <Link to="/profile">
-                  <SidebarMenuButton className="bg-gray-100 dark:bg-gray-800">
+                  <SidebarMenuButton className={isActive("/profile") ? "bg-gray-100 dark:bg-gray-800" : ""}>
                     <User />
                     <span>Meu perfil</span>
                   </SidebarMenuButton>

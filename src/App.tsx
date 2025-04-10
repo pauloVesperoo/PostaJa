@@ -28,6 +28,7 @@ const App = () => (
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Signup />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/scheduled" element={<Dashboard />} /> {/* Temporary using Dashboard as placeholder */}
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/calendar" element={<Calendar />} />
