@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -106,10 +105,12 @@ const Dashboard = () => {
           <SidebarContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <FileText />
-                  <span>Posts</span>
-                </SidebarMenuButton>
+                <Link to="/dashboard">
+                  <SidebarMenuButton>
+                    <FileText />
+                    <span>Posts</span>
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
               
               <SidebarMenuItem>
@@ -139,17 +140,21 @@ const Dashboard = () => {
             <SidebarSeparator />
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <Settings />
-                  <span>Configurações</span>
-                </SidebarMenuButton>
+                <Link to="/settings">
+                  <SidebarMenuButton>
+                    <Settings />
+                    <span>Configurações</span>
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
               
               <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <User />
-                  <span>Meu perfil</span>
-                </SidebarMenuButton>
+                <Link to="/profile">
+                  <SidebarMenuButton>
+                    <User />
+                    <span>Meu perfil</span>
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
               
               <SidebarMenuItem>

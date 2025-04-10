@@ -97,10 +97,12 @@ const ProfileSidebar = ({ children }: ProfileSidebarProps) => {
             <SidebarSeparator />
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <Settings />
-                  <span>Configurações</span>
-                </SidebarMenuButton>
+                <Link to="/settings">
+                  <SidebarMenuButton>
+                    <Settings />
+                    <span>Configurações</span>
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
               
               <SidebarMenuItem>
