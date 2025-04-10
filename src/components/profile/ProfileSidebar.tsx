@@ -17,7 +17,6 @@ import {
   FileText,
   Clock,
   CalendarDays,
-  Users,
   Settings,
   LogOut,
   User
@@ -71,24 +70,21 @@ const ProfileSidebar = ({ children }: ProfileSidebarProps) => {
               </SidebarMenuItem>
               
               <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <Clock />
-                  <span>Agendados</span>
-                </SidebarMenuButton>
+                <Link to="/dashboard">
+                  <SidebarMenuButton>
+                    <Clock />
+                    <span>Agendados</span>
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
               
               <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <CalendarDays />
-                  <span>Calendário</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              
-              <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <Users />
-                  <span>Contas</span>
-                </SidebarMenuButton>
+                <Link to="/calendar">
+                  <SidebarMenuButton>
+                    <CalendarDays />
+                    <span>Calendário</span>
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarContent>

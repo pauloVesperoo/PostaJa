@@ -15,7 +15,6 @@ import {
   User,
   FileText,
   Clock,
-  Users,
   Send
 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -121,17 +120,12 @@ const Dashboard = () => {
               </SidebarMenuItem>
               
               <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <CalendarDays />
-                  <span>Calendário</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              
-              <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <Users />
-                  <span>Contas</span>
-                </SidebarMenuButton>
+                <Link to="/calendar">
+                  <SidebarMenuButton>
+                    <CalendarDays />
+                    <span>Calendário</span>
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarContent>
