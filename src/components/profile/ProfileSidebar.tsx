@@ -19,7 +19,8 @@ import {
   CalendarDays,
   Settings,
   LogOut,
-  User
+  User,
+  PlusCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -47,29 +48,31 @@ const ProfileSidebar = ({ children }: ProfileSidebarProps) => {
             
             {/* Highlighted Buttons for Main Functions */}
             <div className="space-y-2 mt-2">
-              <Button 
-                className="w-full bg-gradient-to-r from-brand-purple to-brand-blue hover:opacity-90"
-                onClick={() => alert("Criar conteúdo com IA")}
-              >
-                <Camera className="mr-2 h-5 w-5" />
-                Criar com IA
-              </Button>
+              <Link to="/create-post" className="block w-full">
+                <Button 
+                  className="w-full bg-gradient-to-r from-brand-purple to-brand-blue hover:opacity-90"
+                >
+                  <Camera className="mr-2 h-5 w-5" />
+                  Criar com IA
+                </Button>
+              </Link>
               
-              <Button 
-                className="w-full bg-gradient-to-r from-brand-blue to-green-500 hover:opacity-90"
-                onClick={() => alert("Agendar post")}
-              >
-                <Instagram className="mr-2 h-5 w-5" />
-                Agendar Post
-              </Button>
+              <Link to="/create-post" className="block w-full">
+                <Button 
+                  className="w-full bg-gradient-to-r from-brand-blue to-green-500 hover:opacity-90"
+                >
+                  <Instagram className="mr-2 h-5 w-5" />
+                  Agendar Post
+                </Button>
+              </Link>
             </div>
           </SidebarHeader>
           
           <SidebarContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <Link to="/dashboard">
-                  <SidebarMenuButton className={isActive("/dashboard") ? "bg-gray-100 dark:bg-gray-800" : ""}>
+                <Link to="/posts">
+                  <SidebarMenuButton className={isActive("/posts") || isActive("/dashboard") ? "bg-gray-100 dark:bg-gray-800" : ""}>
                     <FileText />
                     <span>Posts</span>
                   </SidebarMenuButton>
@@ -90,6 +93,15 @@ const ProfileSidebar = ({ children }: ProfileSidebarProps) => {
                   <SidebarMenuButton className={isActive("/calendar") ? "bg-gray-100 dark:bg-gray-800" : ""}>
                     <CalendarDays />
                     <span>Calendário</span>
+                  </SidebarMenuButton>
+                </Link>
+              </SidebarMenuItem>
+              
+              <SidebarMenuItem>
+                <Link to="/create-post">
+                  <SidebarMenuButton className={isActive("/create-post") ? "bg-gray-100 dark:bg-gray-800" : ""}>
+                    <PlusCircle />
+                    <span>Criar Post</span>
                   </SidebarMenuButton>
                 </Link>
               </SidebarMenuItem>
@@ -118,10 +130,12 @@ const ProfileSidebar = ({ children }: ProfileSidebarProps) => {
               </SidebarMenuItem>
               
               <SidebarMenuItem>
-                <SidebarMenuButton className="text-red-500 hover:text-red-600">
-                  <LogOut />
-                  <span>Sair</span>
-                </SidebarMenuButton>
+                <Link to="/login">
+                  <SidebarMenuButton className="text-red-500 hover:text-red-600">
+                    <LogOut />
+                    <span>Sair</span>
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarFooter>

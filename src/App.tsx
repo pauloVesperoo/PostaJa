@@ -13,6 +13,9 @@ import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import Calendar from "./pages/Calendar";
 import NotFound from "./pages/NotFound";
+import ScheduledPosts from "./pages/ScheduledPosts";
+import PostsList from "./pages/PostsList";
+import CreatePost from "./pages/CreatePost";
 
 const queryClient = new QueryClient();
 
@@ -28,7 +31,9 @@ const App = () => (
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Signup />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/scheduled" element={<Dashboard />} /> {/* Temporary using Dashboard as placeholder */}
+            <Route path="/posts" element={<PostsList />} />
+            <Route path="/scheduled" element={<ScheduledPosts />} />
+            <Route path="/create-post" element={<CreatePost />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/calendar" element={<Calendar />} />
